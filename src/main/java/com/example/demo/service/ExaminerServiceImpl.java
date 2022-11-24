@@ -11,7 +11,7 @@ import java.util.*;
 public class ExaminerServiceImpl implements ExaminerService {
 private final QuestionService questionService;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
+    public ExaminerServiceImpl(JavaQuestionService questionService) {
         this.questionService = questionService;
     }
 

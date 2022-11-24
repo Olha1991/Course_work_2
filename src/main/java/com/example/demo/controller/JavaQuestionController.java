@@ -17,6 +17,7 @@ public class JavaQuestionController {
 
     @GetMapping
     public String getQuestion(){
+
         return questionService.getAll().toString();
     }
 
