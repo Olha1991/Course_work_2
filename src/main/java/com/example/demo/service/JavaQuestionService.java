@@ -10,11 +10,11 @@ import java.util.*;
 @Service
 public class JavaQuestionService implements QuestionService {
     private final Random random;
-    private final List<Question> questions;
+    private final Set<Question> questions;
 
     public JavaQuestionService() {
         this.random = new Random();
-        this.questions = new ArrayList<>();
+        this.questions = new HashSet<>();
     }
     @Override
     public Question add(String question, String answer){
@@ -52,6 +52,11 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion(){
-        return questions.get(random.nextInt(questions.size()));
+        if(questions.size() == 0){
+            return null;
+        }
+        return questions.stream().skip(random.nextInt(questions.size()))
+                .findAny()
+                .orElse(null);
     }
 }
