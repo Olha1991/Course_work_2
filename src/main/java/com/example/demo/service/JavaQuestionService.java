@@ -18,6 +18,7 @@ public class JavaQuestionService implements QuestionService {
     }
     @Override
     public Question add(String question, String answer){
+
         return add(new Question(question,answer));
     }
 
@@ -26,7 +27,8 @@ public class JavaQuestionService implements QuestionService {
         if(questions.contains(question)){
             throw new QuestionAlreadyExistException();
         }
-        return question;
+        questions.add(question);
+        return (question);
     }
 
     @Override
@@ -34,7 +36,8 @@ public class JavaQuestionService implements QuestionService {
         if(!questions.contains(question)){
             throw new QuestionNotFoundException();
         }
-        return question;
+        questions.remove(question);
+        return (question);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class JavaQuestionService implements QuestionService {
         if(!questions.contains(question)) {
             throw new QuestionNotFoundException();
         }
-        return question;
+        return (question);
     }
 
     @Override
