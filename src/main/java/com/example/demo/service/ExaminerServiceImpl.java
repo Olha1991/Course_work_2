@@ -18,7 +18,7 @@ private final QuestionService questionService;
     @Override
     public Collection<Question> getQuestions(int amount){
         Collection<Question> questions = questionService.getAll();
-        if(amount > questionService.getAll().size() || amount > 0){
+        if(amount > questions.size() || amount < 1){
             throw new FewQuestionsException();
         }
         Set<Question> result = new HashSet<>();

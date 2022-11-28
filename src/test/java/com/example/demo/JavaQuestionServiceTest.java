@@ -22,10 +22,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 public class JavaQuestionServiceTest {
     private final JavaQuestionService javaQuestionService = new JavaQuestionService();
 
-    @AfterEach
-    public void AfterEach() {
-        javaQuestionService.getAll().forEach(question -> javaQuestionService.remove(question));
-    }
 
     @Test
     public void addTest(){
@@ -68,6 +64,8 @@ public class JavaQuestionServiceTest {
         questions.forEach(javaQuestionService::add);
         assertThat(javaQuestionService.getRandomQuestion()).isIn(javaQuestionService.getAll());
     }
+
+
 
     public static Stream<Arguments> questions(){
         return Stream.of(
